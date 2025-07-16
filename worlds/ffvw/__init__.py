@@ -13,16 +13,6 @@ from .Regions import create_regions
 from .Client import FFVWClient
 
 
-# removed until lists are supported
-# class FFVWSettings(settings.Group):
-#     class APIUrls(list):
-#         """A list of API URLs to get map shuffle, crest shuffle, and battlefield reward shuffle data from."""
-#     api_urls: APIUrls = [
-#         "https://api.FFVWrando.net/",
-#         "http://FFVWr.jalchavware.com:5271/"
-#     ]
-
-
 class FFVWWebWorld(WebWorld):
     setup_en = Tutorial(
         "Multiworld Setup Guide",
@@ -40,7 +30,6 @@ class FFVWWebWorld(WebWorld):
 
 class FFVWWorld(World):
     """Final Fantasy: V: Whirlwind is a light-hearted JRPG for the Super Nintendo."""
-    # -Giga Otomia
 
     game = "Final Fantasy V: Whirlwind"
     topology_present = False
@@ -59,8 +48,9 @@ class FFVWWorld(World):
         return FFVWItem(name, classification, item_table[name], self.player)
 
     def create_items(self):
-        jobs = [self.create_item("Job " + str(i+1).zfill(2), ItemClassification.useful) for i in range(1, 12)]
-        self.multiworld.itempool += jobs
+        create_items(self)
+        #jobs = [self.create_item("Job " + str(i+1).zfill(2), ItemClassification.useful) for i in range(1, 12)]
+        #self.multiworld.itempool += jobs
 
 
 #   create_regions = create_regions
